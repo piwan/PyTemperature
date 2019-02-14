@@ -29,6 +29,15 @@ class Temperature:
     def fahrenheit(self, value):
         self.celsius = (value - 32) * 5 / 9
 
+    def __eq__(self, other):
+        return self.celsius == other.celsius
+
+    def __lt__(self, other):
+        return self.celsius < other.celsius
+
+    def __le__(self, other):
+        return self.celsius <= other.celsius
+
 
 class AbsoluteZeroError(Exception):
     """An exception thrown when the value is below absolute zero (-273 Celsius)"""
