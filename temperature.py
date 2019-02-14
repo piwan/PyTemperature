@@ -29,6 +29,15 @@ class Temperature:
     def fahrenheit(self, value):
         self.celsius = (value - 32) * 5 / 9
 
+
+    @property
+    def kelvin(self):
+        return self.celsius + 273.15
+
+    @kelvin.setter
+    def kelvin(self, value):
+        self.celsius = value - 273.15
+
     def __eq__(self, other):
         return self.celsius == other.celsius
 
@@ -55,6 +64,9 @@ class Temperature:
 
     def __int__(self):
         return self.celsius
+
+    def __repr__(self):
+        return f'{self.celsius}°C = {self.fahrenheit}°F = {self.kelvin}K'
 
 
 class AbsoluteZeroError(Exception):
