@@ -15,7 +15,10 @@ class Temperature:
 
     @celsius.setter
     def celsius(self, value):
-        self._value = value
+        if (value < -273):
+            raise AbsoluteZeroError(value)
+        else:
+            self._value = value
 
     @property
     def fahrenheit(self):
@@ -25,3 +28,14 @@ class Temperature:
     @fahrenheit.setter
     def fahrenheit(self, value):
         self.celsius = (value - 32) * 5 / 9
+
+
+class AbsoluteZeroError(Exception):
+    """An exception thrown when the value is below absolute zero (-273 Celsius)"""
+
+    def __init__(self, value):
+        """
+        Create new exception
+        :param value the value that is lower than absolute zero point
+        """
+        super().__init__(f'Value {value} is below absolute zero point')
