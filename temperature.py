@@ -38,6 +38,24 @@ class Temperature:
     def __le__(self, other):
         return self.celsius <= other.celsius
 
+    def __add__(self, other):
+        return self.celsius + other.celsius
+
+    def __sub__(self, other):
+        return self.celsius - other.celsius
+
+    def __mul__(self, other):
+        return self.celsius * int(other)
+
+    def __truediv__(self, other):
+        return self.celsius / int(other)
+
+    def __abs__(self):
+        return abs(self.celsius)
+
+    def __int__(self):
+        return self.celsius
+
 
 class AbsoluteZeroError(Exception):
     """An exception thrown when the value is below absolute zero (-273 Celsius)"""
